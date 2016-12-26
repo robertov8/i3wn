@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# User configurables below:
+# Uncomment this line for fahrenheit:
+#metric='imperial' && unit='F'
+# Otherwise comment above line, uncomment here for celcius:
+
+# http://openweathermap.org/city/
+# City
+id=
+metric='metric'
+# temp: °F or °C
+unit='C'
+# language
+lang='pt'
+# Key - # http://openweathermap.org/
+key=2add9915cbc49d89c4cd1edb775cf362
+
+# First, geolocate our IP:
+#ipinfo=$(curl -s ipinfo.io)
+#latlong=$(echo $ipinfo | jq -r '.loc')
+weather=$(curl -s "http://api.openweathermap.org/data/2.5/weather?id=${id}&units=${metric}&lang={$lang}&appid=${key}")
+
+# weather=$(curl -s "http://api.openweathermap.org/data/2.5/weather\?id\=${id}\&units\=${metric}\&appid\=${key}")
+# city=$(echo $weather | jq -r '.name')
+temperature=$(printf '%.2s' $(echo $weather | jq -r '.main.temp'))
+icon=$(echo $weather | jq '.weather[0].icon')
+condition=$(echo $weather | jq -r '.weather[0].description')
+
+
+case "$icon" in
+	'"01n"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"02n"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"03n"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"04n"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"09n"')
+		echo $condition  $temperature°$unit
+		;; 
+	'"10n"')
+		echo $condition  $temperature°$unit
+		;; 
+	'"11n"') 
+		echo $condition  $temperature°$unit
+		;;
+
+	'"01d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"02d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"03d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"03d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"09d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"10d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"11d"') 
+		echo $condition  $temperature°$unit
+		;;
+	'"13d"') 
+		echo $condition  $temperature°$unit
+		;;		
+	* )
+		echo $icon $temperature°$unit
+		;;
+esac
