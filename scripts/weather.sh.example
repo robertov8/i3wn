@@ -10,11 +10,11 @@
 id=
 metric='metric'
 # temp: °F or °C
-unit='C'
+unit=''
 # language
-lang='pt'
+lang=''
 # Key - # http://openweathermap.org/
-key=2add9915cbc49d89c4cd1edb775cf362
+key=
 
 # First, geolocate our IP:
 #ipinfo=$(curl -s ipinfo.io)

@@ -38,6 +38,8 @@ sudo apt install thunar && thunar-dropbox-plugin -y
 # Terminal Zsh
 sudo apt install zsh -y
 
+# App - The change Themes and Fonts
+sudo apt install lxappearance -y
 
 #########################################################
 ## Programs (ppas)
@@ -85,7 +87,7 @@ git clone https://github.com/Boruch-Baum/morc_menu.git ~/i3/apps/morc_menu
 mkdir -p ~/.fonts
 
 # Icons Fonts
-wget https://github.com/FortAwesome/Font-Awesom/earchive/master.zip
+wget https://github.com/FortAwesome/Font-Awesome/earchive/master.zip
 unzip master.zip
 mv -f Font-Awesome-master/fonts/fontawesome-webfont.ttf ~/.fonts/.
 rm -rf Font-Awesome-master/
@@ -99,7 +101,6 @@ rm -rf YosemiteSanFranciscoFont-master/
 rm master.zip
 
 # App - The change Themes and Fonts
-sudo apt install lxappearance -y
 rm ~/.gtkrc-2.0
 rm ~/.config/gtk-3.0/settings.ini
 ln -s ~/i3/fonts/.gtkrc-2.0 ~/.
@@ -115,13 +116,8 @@ sudo bash /etc/fonts/infinality/infctl.sh setstyle
 mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Arc-Dark/ ~/.config/sublime-text-3/Packages/User/.
 mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Widget.sublime-settings ~/.config/sublime-text-3/Packages/User/.
 
-
-#########################################################
-## Generate Shortcht
-#########################################################
-
+# Generate Shortcut
 grep '^## \|^### \|^bindsym $mod+\|^bindsym XF86' config | | awk '{print $0,"\n"}' > shortcut.md 
-
 
 #########################################################
 ## Programs (download)
