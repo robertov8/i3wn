@@ -117,6 +117,13 @@ mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Widget.sublime-settings ~/.con
 
 
 #########################################################
+## Generate Shortcht
+#########################################################
+
+grep '^## \|^### \|^bindsym $mod+\|^bindsym XF86' config > shortcut.md 
+
+
+#########################################################
 ## Programs (download)
 #########################################################
 
