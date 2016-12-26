@@ -3,4 +3,4 @@ Dotfile i3wn
 
 ![Desktop](desktop.png)
 
-[ShortCut](shotcut.md)
+[ShortCut](shortcut.md)
