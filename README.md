@@ -92,255 +92,229 @@ screenfetch
 ![Desktop1](wallpaper/desktop1.png)
 ![Desktop2](wallpaper/desktop.png)
 
-**$mod(Win Key)**
+# keybinds i3wm
 
+**$mod(Win Key)**
 
 ![keyboard1](wallpaper/keyboard-layer1.png)
 ![keyboard2](wallpaper/keyboard-layer2.png)
 
 
+
 ## Layout 
-=========================================================
+
+keybinds | Change borders
+------------ | -------------
+**$mod+u** | border none
+**$mod+y** | border pixel
+**$mod+n** | border normal
 
 
-### Change borders 
+keybinds| kill focused window
+------------ | -------------
+**$mod+Shift+q** | kill
 
-`bindsym` **$mod+u** `border none`
+keybinds | Close workspace and skip anothor open workspace
+------------ | -------------
+**$mod+Shift+Delete** | kill
 
-`bindsym` **$mod+y** `border pixel 1 `
+keybinds | Change focus
+------------ | -------------
+**$mod+j** | left
+**$mod+k** | down
+**$mod+l** | up
+**$mod+ccedilla** | right
 
-`bindsym` **$mod+n** `border normal`
+keybinds | alternatively, you can use the cursor keys
+------------ | -------------
+**$mod+Left** | left
+**$mod+Down** | down
+**$mod+Up** | up 
+**$mod+Right** | right
 
-### kill focused window 
 
-`bindsym` **$mod+Shift+q** `kill` 
+keybinds | move focused window 
+------------ | -------------
+**$mod+Shift+j** | left
+**$mod+Shift+k** | down
+**$mod+Shift+l** | up 
+**$mod+Shift+ccedilla** | right
 
-### Close workspace and skip anothor open workspace` 
 
-`bindsym` **$mod+Shift+Delete** `kill, workspace prev` 
+keybinds | alternatively, you can use the cursor keys
+------------ | -------------
+**$mod+Shift+Left** | left
+**$mod+Shift+Down** | down
+**$mod+Shift+Up** | up 
+**$mod+Shift+Right** | right
+ 
+keybinds | split in horizontal orientation 
+------------ | -------------
+**$mod+h** | split
 
-### change focus 
+keybinds | split in vertical orientation 
+------------ | -------------
+**$mod+h** | split
 
-`bindsym` **$mod+j** `focus left` 
 
-`bindsym` **$mod+k** `focus down` 
+keybinds | enter fullscreen mode for the focused container 
+------------ | -------------
+**$mod+f** | fullscreen
 
-`bindsym` **$mod+l** `focus up` 
 
-`bindsym` **$mod+ccedilla** `focus right` 
+keybinds | change container layout (stacked, tabbed, toggle split) 
+------------ | -------------
+**$mod+s** | stacking
+**$mod+w** | tabbed
+**$mod+e** | toggle split
 
-### alternatively, you can use the cursor keys: 
 
-`bindsym` **$mod+Left** `focus left` 
+keybinds | toggle tiling / floating 
+------------ | -------------
+**$mod+Shift+space** | tiling/floating
 
-`bindsym` **$mod+Down** `focus down` 
 
-`bindsym` **$mod+Up** `focus up` 
+keybinds | change focus between tiling / floating windows
+------------ | -------------
+**$mod+space** | focus tiling/floating
 
-`bindsym` **$mod+Right** `focus right` 
 
-### move focused window 
+keybinds | focus the parent container 
+------------ | -------------
+**$mod+a** | parent
 
-`bindsym` **$mod+Shift+j** `move left` 
 
-`bindsym` **$mod+Shift+k** `move down` 
+keybinds | focus the child container
+------------ | -------------
+**$mod+z** | child
 
-`bindsym` **$mod+Shift+l** `move up` 
 
-`bindsym` **$mod+Shift+ccedilla** `move right` 
+keybinds | resize window (you can also use the mouse for that) 
+------------ | -------------
+**$mod+r** | resize 
 
-### alternatively, you can use the cursor keys: 
 
-`bindsym` **$mod+Shift+Left** `move left` 
 
-`bindsym` **$mod+Shift+Down** `move down` 
-
-`bindsym` **$mod+Shift+Up** `move up` 
-
-`bindsym` **$mod+Shift+Right** `move right` 
-
-### split in horizontal orientation 
-
-`bindsym` **$mod+h** `split h` 
-
-### split in vertical orientation 
-
-`bindsym` **$mod+v** `split v` 
-
-### enter fullscreen mode for the focused container 
-
-`bindsym` **$mod+f** `fullscreen toggle`
-
-### change container layout (stacked, tabbed, toggle split) 
-
-`bindsym` **$mod+s** `layout stacking` 
-
-`bindsym` **$mod+w** `layout tabbed` 
-
-`bindsym` **$mod+e** `layout toggle split` 
-
-### toggle tiling / floating 
-
-`bindsym` **$mod+Shift+space** `floating toggle` 
-
-### change focus between tiling / floating windows` 
-
-`bindsym` **$mod+space** `focus mode_toggle 
-
-### focus the parent container 
-
-`bindsym` **$mod+a** `focus parent` 
-
-### resize window (you can also use the mouse for that) 
-
-`bindsym` **$mod+r** `mode "  "` 
-
-=========================================================
 ## Workspace 
-=========================================================
 
-### switch to workspace 
+keybinds | switch to workspace 
+------------ | -------------
+**$mod+1** | workspace1 
+**$mod+2** | workspace2
+**$mod+3** | workspace3
+**$mod+4** | workspace4
+**$mod+5** | workspace5
+**$mod+6** | workspace6
+**$mod+7** | workspace7
+**$mod+8** | workspace8
+**$mod+9** | workspace9
+**$mod+10** | workspace10
 
-`bindsym` **$mod+1** `workspace $workspace1` 
+keybinds | move focused container to workspace 
+------------ | -------------
+**$mod+Shift+1** | workspace1 
+**$mod+Shift+2** | workspace2
+**$mod+Shift+3** | workspace3
+**$mod+Shift+4** | workspace4
+**$mod+Shift+5** | workspace5
+**$mod+Shift+6** | workspace6
+**$mod+Shift+7** | workspace7
+**$mod+Shift+8** | workspace8
+**$mod+Shift+9** | workspace9
+**$mod+Shift+10** | workspace10
 
-`bindsym` **$mod+2** `workspace $workspace2` 
-
-`bindsym` **$mod+3** `workspace $workspace3` 
-
-`bindsym` **$mod+4** `workspace $workspace4` 
-
-`bindsym` **$mod+5** `workspace $workspace5` 
-
-`bindsym` **$mod+6** `workspace $workspace6` 
-
-`bindsym` **$mod+7** `workspace $workspace7` 
-
-`bindsym` **$mod+8** `workspace $workspace8` 
-
-`bindsym` **$mod+9** `workspace $workspace9` 
-
-`bindsym` **$mod+0** `workspace $workspace10` 
-
-### move focused container to workspace 
-
-`bindsym` **$mod+Shift+1** `move container to workspace $workspace1` 
-
-`bindsym` **$mod+Shift+2** `move container to workspace $workspace2` 
-
-`bindsym` **$mod+Shift+3** `move container to workspace $workspace3` 
-
-`bindsym` **$mod+Shift+4** `move container to workspace $workspace4` 
-
-`bindsym` **$mod+Shift+5** `move container to workspace $workspace5` 
-
-`bindsym` **$mod+Shift+6** `move container to workspace $workspace6` 
-
-`bindsym` **$mod+Shift+7** `move container to workspace $workspace7` 
-
-`bindsym` **$mod+Shift+8** `move container to workspace $workspace8` 
-
-`bindsym` **$mod+Shift+9** `move container to workspace $workspace9` 
-
-`bindsym` **$mod+Shift+0** `move container to workspace $workspace10` 
-
-### reload the configuration file 
-
-`bindsym` **$mod+Shift+c** `reload` 
-
-### restart i3 inplace (preserves your layout/session, can be used to upgrade i3) 
-
-`bindsym` **$mod+Shift+r** `restart` 
+keybinds | reload the configuration file 
+------------ | -------------
+**$mod+Shift+c** | reload
 
 
-=========================================================
+keybinds | restart i3 inplace (preserves your layout/session, can be used to upgrade i3) 
+------------ | -------------
+**$mod+Shift+r** | restart
+
+
 ## Menu 
-=========================================================
 
 
-### Rofi 
-
-`bindsym` **$mod+Shift+d exec** `rofi -show run -opacity "85" -font "System San Francisco Display 14"` 
-
-`bindsym` **$mod+Ctrl+d** `exec rofi -show window -opacity "85" -font "System San Francisco Display 14"` 
-
-`bindsym` **$mod+Mod1+d** `exec rofi -show ssh -opacity "85" -font "System San Francisco Display 14"` 
-
-### Snapfly 
-
-`bindsym` **$mod+d exec** `snapfly-show` 
+keybinds | Rofi 
+------------ | -------------
+**$mod+Shift+d** | run
+**$mod+Ctrl+d** | window
+**$mod+Alt+d** | ssh
 
 
-=========================================================
+keybinds | Snapfly 
+------------ | -------------
+**$mod+d** | show
+
+
 ## Shortcut 
-=========================================================
+
+keybinds | Volume controls  
+------------ | -------------
+**XF86AudioRaiseVolume** | +increase
+**XF86AudioLowerVolume** | - decrease
+**XF86AudioMute** | mute
+
+keybinds | Sreen brightness controls 
+------------ | -------------
+**XF86MonBrightnessUp** | +increase
+**XF86MonBrightnessDown** | - decrease
+
+keybinds | Touchpad controls (Enable and Disable) 
+------------ | -------------
+**XF86TouchpadToggle** | touchpad
 
 
+keybinds | Media player controls 
+------------ | -------------
+**XF86AudioPlay** | play
+**XF86AudioPause** | pause
+**XF86AudioNext** | next
+**XF86AudioPrev** | previous
 
-### Volume controls 
+keybinds | start a terminal 
+------------ | -------------
+**$mod+Return** | i3-sensible-terminal
 
-`bindsym` **XF86AudioRaiseVolume** `exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') +5% #increase sound volume` 
-
-`bindsym` **XF86AudioLowerVolume** `exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') -5% #increase sound volume` 
-
-`bindsym` **XF86AudioMute** `exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound` 
-
-### Sreen brightness controls 
-
-`bindsym` **XF86MonBrightnessUp** `exec xbacklight -inc 20 # increase screen brightness` 
-
-`bindsym` **XF86MonBrightnessDown** `exec xbacklight -dec 20 # decrease screen brightness` 
-
-### Touchpad controls (Enable and Disable) 
-
-`bindsym` **XF86TouchpadToggle** `exec $HOME/i3/scripts/toggletouchpad.sh # toggle touchpad` 
-
-### Media player controls 
-
-`bindsym` **XF86AudioPlay** `exec playerctl play` 
-
-`bindsym` **XF86AudioPause** `exec playerctl pause` 
-
-`bindsym` **XF86AudioNext** `exec playerctl next` 
-
-`bindsym` **XF86AudioPrev** `exec playerctl previous` 
-
-### start a terminal 
-
-`bindsym` **$mod+Return** `exec i3-sensible-terminal` 
-
-### Screen Shots 
-
-`bindsym` **$mod+p** `exec mate-screenshot --area` 
-
-`bindsym` **$mod+Shift+p** `exec mate-screenshot` 
-
-`bindsym` **$mod+Ctrl+p** `exec mate-screenshot -w`
-
-### File Explorer 
-
-`bindsym` **$mod+Shift+f** `exec caja` 
-
-### Show Calender 
-
-`bindsym` **$mod+c** `exec zenity --calendar` 
-
-### Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces. 
-
-`bindsym` **$mod+Shift+g** `mode "$mode_gaps"` 
+keybinds | Screen Shots 
+------------ | -------------
+**$mod+Return** | mate-screenshot area
+**$mod+Return** | mate-screenshot all
+**$mod+Return** | mate-screenshot window
 
 
-=========================================================
+keybinds | File Explorer 
+------------ | -------------
+**$mod+Shift+f** | caja
+
+
+keybinds | Calender 
+------------ | -------------
+**$mod+c** | zenity
+
+
+keybinds | gap mode 
+------------ | -------------
+**$mod+Shift+g** | modifying
+**o** | outer
+**i** | inner
+**+** | outer/inner local increment
+**-** | outer/inner local decrement
+**Shift+(+)** | outer/inner local increment
+**Shift+(-)** | outer/inner local decrement
+
+>Press $mod+Shift+g to enter the . Choose or i for  outer/inner gaps. 
+>Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
+>If you also press Shift with these keys, the change will be global for all workspaces. 
+
+
 ## System 
-=========================================================
 
+keybinds | exit i3 (logs you out of your X session) 
+------------ | -------------
+**$mod+delete** | menu
 
-### exit i3 (logs you out of your X session) 
-
-`bindsym` **$mod+Shift+e** `mode "$mode_system"` 
-
-### lock screen 
-
-`bindsym` **$mod+Shift+x** `exec i3lock -e -i $HOME/i3/wallpaper/electriccolor/electriccolor.png -c 000000` 
-
-
-
+keybinds | exit i3 (logs you out of your X session) 
+------------ | -------------
+**$mod+Shift+x** | i3lock
