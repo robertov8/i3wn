@@ -88,7 +88,7 @@ screenfetch
 ```
 
 ## Screenhot
-![Desktop1](wallpaper/desktop.jpg)
+![Desktop1](wallpaper/desktop1.png)
 ![Desktop2](wallpaper/desktop.png)
 
 **$mod(Win Key)**

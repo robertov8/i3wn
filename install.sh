@@ -41,6 +41,9 @@ sudo apt install zsh -y
 # App - The change Themes and Fonts
 sudo apt install lxappearance -y
 
+# Apt-get
+sudo apt-get install aptitude -y
+
 #########################################################
 ## Programs (ppas)
 #########################################################
@@ -82,6 +85,13 @@ sudo python setup.py install
 
 # Morc_menu - Terminal
 git clone https://github.com/Boruch-Baum/morc_menu.git ~/i3/apps/morc_menu
+
+## i3blocks - contrib
+git clone https://github.com/vivien/i3blocks-contrib.git ~/i3/apps/i3blocks-contrib
+# apt-upgrades
+sudo cp ~/i3/scripts/80i3blocks /etc/apt/apt.conf.d/80i3blocks
+sudo chown root:root /etc/apt/apt.conf.d/80i3blocks
+sudo chmod 644 /etc/apt/apt.conf.d/80i3blocks
 
 # Default
 mkdir -p ~/.fonts

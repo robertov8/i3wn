@@ -100,7 +100,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-# bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 ### resize window (you can also use the mouse for that)
 mode "  " {
@@ -135,14 +135,14 @@ bindsym $mod+r mode "  "
 # variables workspace
 set $workspace1 " 1:  LVDS1 "
 set $workspace2 " 2:  HDMI1 "
-set $workspace3 " 3:  "
-set $workspace4 " 4:  "
-set $workspace5 " 5:  "
-set $workspace6 " 6:  "
+set $workspace3 " 3:  "
+set $workspace4 " 4:  "
+set $workspace5 " 5:  "
+set $workspace6 " 6:  "
 set $workspace7 " 7:  "
 set $workspace8 " 8:  "
 set $workspace9 " 9:  "
-set $workspace10 " 10: "
+set $workspace10 " 10:  "
 
 
 # workspace default monitors
@@ -189,11 +189,31 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Move apps spesific workspace
-# Command show class: xprop | grep "WM_CLASS(STRING)" | awk '{print $4 }'
+# Command show class: 
+# xprop | grep "WM_CLASS(STRING)" | awk '{print $4 }'
 # assign [class="Mate-terminal"] $workspace3
 for_window [class="Arandr"] floating enable
 for_window [class="Nitrogen"] floating enable 
 for_window [class="Caja"] floating enable
+for_window [class="Spotify"] floating enable 
+
+
+# 1:  LVDS1 "
+# 2:  HDMI1 "
+# 3:  "
+# 4:  "
+assign [class="Caja"] $workspace4
+# 5:  "
+assign [class="Chromium-browser"] $workspace5
+# 6:  "
+assign [class="Sublime_text"] $workspace6
+#  "
+# 8:  "
+for_window [class="Spotify"] move to workspace $workspace8
+# 9:  "
+# 10: "
+
+
 
 #########################################################
 # Appearance
@@ -205,13 +225,13 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
-#00bfa5
+
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           #00bfa5          $text-color          #00ff00
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+client.focused          $bg-color           #5294E2          $text-color          #39477A
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #39477A
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #39477A
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #39477A
 
 
 
@@ -258,7 +278,8 @@ bar {
         tray_output $monitor1
         output $monitor1
         mode dock
-        separator_symbol ""
+        font pango:System San Francisco Display, FontAwesome 9
+        separator_symbol ""
         status_command i3blocks -c ~/i3/i3blocks/i3blocks.conf
         colors {
              background $bg-color
@@ -276,7 +297,8 @@ bar {
         height 25
         tray_output none
         output $monitor2
-        separator_symbol ""         
+        font pango:System San Francisco Display, FontAwesome 9
+        separator_symbol ""         
         status_command i3blocks -c ~/i3/i3blocks/i3blocks.conf
         colors {
             background $bg-color
@@ -327,7 +349,10 @@ bindsym $mod+Shift+f exec caja
 
 ### Show Calender
 bindsym $mod+c exec zenity --calendar
-
+            
+# Key indicators
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 #########################################################
 # Autostart Apps
 #########################################################
@@ -357,7 +382,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
+smart_borders on
 
 ### Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -410,7 +435,7 @@ mode "$mode_gaps_outer" {
 # set $Locker i3lock && sleep 1
 set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender  |  (H)ibernar |  (R)einiciar |  (D)esligar
 mode "$mode_system" {
-    bindsym b exec --no-startup-id $HOME/i3/scripts/i3exit lock
+    bindsym b exec --no-startup-id  $HOME/i3/apps/i3lock-fancy/lock -f 'DejaVu-Sans'
     bindsym l exec --no-startup-id $HOME/i3/scripts/i3exit logout
     bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit suspend
     bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit hibernate
@@ -421,11 +446,12 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+e mode "$mode_system"
+bindsym $mod+Delete mode "$mode_system"
 
 ### lock screen
 # bindsym $mod+Shift+x exec i3lock --color 475263
-bindsym $mod+Shift+x exec i3lock -e -i $HOME/i3/wallpaper/electriccolor/electriccolor.png -c 000000
+bindsym $mod+Shift+x exec $HOME/i3/apps/i3lock-fancy/lock -f 'DejaVu-Sans'
+#bindsym $mod+Shift+x exec i3lock -e -i $HOME/i3/wallpaper/electriccolor/electriccolor.png -c 000000
 
 # Set Wallpaper
 exec --no-startup-id nitrogen --restore
