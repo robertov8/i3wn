@@ -46,6 +46,7 @@ key=''          # Key - http://openweathermap.org/
 * thunar-dropbox-plugin
 * zsh
 * lxappearance
+* aptitude
 
 **(ppa)**
 
@@ -61,7 +62,7 @@ key=''          # Key - http://openweathermap.org/
 * arc-theme
 * arc-firefox-theme
 * playerctl
-
+* i3blocks-contrib
 
 
 
