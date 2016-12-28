@@ -3,7 +3,7 @@ Dotfile i3wn-gapps
 
 ## Clone
 
-`$ git clone git@github.com:robertov82008/i3wn.git ~/i3`
+`$ git clone --recursive git@github.com:robertov82008/i3wn.git ~/i3`
 
 ## Weather
 `mv scripts/weather.sh.example scripts/weather.sh`
