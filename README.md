@@ -247,6 +247,17 @@ keybinds | Snapfly
 ------------ | -------------
 **$mod+d** | show
 
+keybinds | Automatic switching to the current workspace 
+------------ | -------------
+**$mod+Tab** | switch workspaces
+**alt+tab** | switch right
+**alt+shift+tab** | switch left
+
+
+
+# focus next, previous panel
+bindsym Mod1+Tab focus 
+bindsym Mod1+Shift+Tab focus 
 
 ## Shortcut 
 

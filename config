@@ -188,6 +188,18 @@ bindsym $mod+Shift+c reload
 ### restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+
+# This configuration directive enables automatic workspace back_and_forth
+workspace_auto_back_and_forth yes
+
+# switch workspaces
+bindsym $mod+Tab workspace back_and_forth
+
+# focus next, previous panel
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+
 # Move apps spesific workspace
 # Command show class: 
 # xprop | grep "WM_CLASS(STRING)" | awk '{print $4 }'
@@ -207,6 +219,7 @@ assign [class="Caja"] $workspace4
 assign [class="Chromium-browser"] $workspace5
 # 6:  "
 assign [class="Sublime_text"] $workspace6
+assign [class="jetbrains-phpstorm"] $workspace6
 #  "
 # 8:  "
 for_window [class="Spotify"] move to workspace $workspace8

@@ -126,8 +126,20 @@ sudo bash /etc/fonts/infinality/infctl.sh setstyle
 mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Arc-Dark/ ~/.config/sublime-text-3/Packages/User/.
 mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Widget.sublime-settings ~/.config/sublime-text-3/Packages/User/.
 
+
+# Prezto — Instantly Awesome Zsh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+setopt EXTENDED_GLOB
+
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+
+chsh -s /bin/zsh
+
 # Generate Shortcut
-grep '^## \|^### \|^bindsym $mod+\|^bindsym XF86' config | | awk '{print $0,"\n"}' > shortcut.md 
+#grep '^## \|^### \|^bindsym $mod+\|^bindsym XF86' config | | awk '{print $0,"\n"}' > shortcut.md 
 
 #########################################################
 ## Programs (download)
