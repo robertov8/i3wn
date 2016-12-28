@@ -136,6 +136,7 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
+cp ~/i3/zprezto/.zpreztorc ~/.zprezto/runcoms/.
 chsh -s /bin/zsh
 
 # Generate Shortcut
