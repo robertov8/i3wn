@@ -44,6 +44,9 @@ sudo apt install lxappearance -y
 # Apt-get
 sudo apt-get install aptitude -y
 
+# ClassicMenu Indicator
+sudo apt-get install classicmenu-indicator -y
+
 #########################################################
 ## Programs (ppas)
 #########################################################
@@ -59,6 +62,22 @@ sudo apt install fontconfig-infinality -y
 sudo add-apt-repository ppa:moka/daily
 sudo apt update && sudo apt install moka-icon-theme -y
 
+# Pomodoro
+sudo add-apt-repository ppa:atareao/atareao
+sudo apt-get update
+sudo apt-get install pomodoro-indicator
+
+## Material Design
+# ADAPTA THEME
+sudo add-apt-repository ppa:tista/adapta -y
+sudo apt-get update
+sudo apt install adapta-gtk-theme -y
+sudo apt install adapta-backgrounds -y
+# Icon Theme
+sudo add-apt-repository ppa:snwh/pulp
+sudo apt-get update
+sudo apt-get install paper-icon-theme
+sudo apt-get install paper-cursor-theme
 
 #########################################################
 ## Programs (manual)
@@ -77,11 +96,6 @@ ln -s ~/i3/config ~/.config/i3/config
 mv ~/.Xresources ~/.Xresources.bk
 cp .Xresources ~/.
 xrdb ~/.Xresources
-
-# Snapfly - menu Gtk
-git clone https://github.com/drakmail/snapfly.git ~/i3/apps/snapfly
-cd ~/i3/apps/snapfly/
-sudo python setup.py install
 
 # Morc_menu - Terminal
 git clone https://github.com/Boruch-Baum/morc_menu.git ~/i3/apps/morc_menu
@@ -138,9 +152,6 @@ done
 
 cp ~/i3/zprezto/.zpreztorc ~/.zprezto/runcoms/.
 chsh -s /bin/zsh
-
-# Generate Shortcut
-#grep '^## \|^### \|^bindsym $mod+\|^bindsym XF86' config | | awk '{print $0,"\n"}' > shortcut.md 
 
 #########################################################
 ## Programs (download)

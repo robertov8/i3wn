@@ -148,6 +148,7 @@ set $workspace10 " 10:  "
 # workspace default monitors
 set $monitor1 "LVDS1"
 set $monitor2 "HDMI1"
+set $monitor3 "VGA1"
 
 workspace $workspace1 output $monitor1
 workspace $workspace2 output $monitor2
@@ -201,13 +202,15 @@ bindsym Mod1+Shift+Tab focus left
 
 
 # Move apps spesific workspace
-# Command show class: 
-# xprop | grep "WM_CLASS(STRING)" | awk '{print $4 }'
+# Command show class: xpropc
 # assign [class="Mate-terminal"] $workspace3
 for_window [class="Arandr"] floating enable
 for_window [class="Nitrogen"] floating enable 
 for_window [class="Caja"] floating enable
 for_window [class="Spotify"] floating enable 
+for_window [class="Galculator"] floating enable 
+for_window [class="Lxappearance"] floating enable 
+for_window [class="Pavucontrol"] floating enable 
 
 
 # 1:  LVDS1 "
@@ -232,32 +235,28 @@ for_window [class="Spotify"] move to workspace $workspace8
 # Appearance
 #########################################################
 
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $bg-color             #2A373E
+set $inactive-bg-color    #2A373E
+set $focused-bg-color     #00897B
+set $placeholder-bg-color #546E7A
+set $text-color           #f3f4f5
+set $inactive-text-color  #546E7A
+set $urgent-bg-color      #E53935
+set $indicator            #39477A
 
-
+set $teste #A40000
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           #6699CC          $text-color          #39477A
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #39477A
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #39477A
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #39477A
-
+client.focused          $bg-color           $focused-bg-color  $text-color          $indicator
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $indicator
+client.background       $bg-color
 
 
 #########################################################
 ## Menu
 #########################################################
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-
-# Start dmenu (a program launcher)
-# bindsym $mod+d exec $HOME/i3/apps/morc_menu/morc_menu
 
 ### Rofi
 # bindsym $mod+space exec rofi -sidebar-mode -show Drun -line 3 -eh 2 -width 70 -padding 70 -opacity "70" -font "Ubuntu 12" -no-disable-history -no-levenshtein-sort -only-match
@@ -265,20 +264,8 @@ bindsym $mod+Shift+d exec rofi -show run -opacity "85" -font "System San Francis
 bindsym $mod+Ctrl+d exec rofi -show window -opacity "85" -font "System San Francisco Display 14"
 bindsym $mod+Mod1+d exec rofi -show ssh -opacity "85" -font "System San Francisco Display 14"
 
-# ClassicMenu Indicator
-exec --no-startup-id /usr/bin/classicmenu-indicator
-
-### Snapfly
-# exec --no-startup-id snapfly
-# bindsym $mod+d exec snapfly-show
 # Transparency
 exec compton
-
-# Dmenu
-# bindsym $mod+space exec dmenu_run -i -p 'Manjaro Linux' -fn 'Ubuntu Mono:bold:pixelsize=16' -nb '#383838' -nf '#ffffff' -sf '#fdf6e3' -sb '#b58900' -l 20
-
-# i3-dmenu-desktop
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 #########################################################
 # Navbar
@@ -301,7 +288,8 @@ bar {
              background $bg-color
              separator #757575
              #                  border             background         text
-             focused_workspace  $bg-color          $bg-color          $text-color
+             focused_workspace  $bg-color          $focused-bg-color  $text-color
+             active_workspace   $bg-color          $bg-color          $text-color
              inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
              urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
@@ -320,21 +308,38 @@ bar {
             background $bg-color
             separator #757575
             #                  border             background         text
-            focused_workspace  $bg-color          $bg-color          $text-color
+            focused_workspace  $bg-color          $focused-bg-color  $text-color
+            active_workspace   $bg-color          $bg-color          $text-color
             inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
             urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
 }
 
+# Monitor: VGA1
+bar {
+        position top
+        height 25
+        tray_output none
+        output $monitor3
+        font pango:System San Francisco Display, FontAwesome 9
+        separator_symbol ""         
+        status_command i3blocks -c ~/i3/i3blocks/i3blocks.conf
+        colors {
+            background $bg-color
+            separator #757575
+            #                  border             background         text
+            focused_workspace  $bg-color          $focused-bg-color  $text-color
+            active_workspace   $bg-color          $bg-color          $text-color
+            inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+            urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        }
+}
 
 #########################################################
 ## Shortcut
 #########################################################
 
 ### Volume controls
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') -5% #increase sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
@@ -369,24 +374,28 @@ bindsym $mod+c exec zenity --calendar
 # Key indicators
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+
 #########################################################
 # Autostart Apps
 #########################################################
 
-# Autostart apps
 exec --no-startup-id caja-dropbox start
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
+# ClassicMenu Indicator
+exec --no-startup-id classicmenu-indicator
 
+# Pomodoro
+exec --no-startup-id /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indicator
 
 #########################################################
 # Settings for i3-gaps
 #########################################################
 
 # Set inner/outer gaps
-gaps inner 2
-gaps outer 2
+gaps inner 3
+gaps outer 3
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
