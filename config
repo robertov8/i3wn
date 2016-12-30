@@ -211,7 +211,7 @@ for_window [class="Spotify"] floating enable
 for_window [class="Galculator"] floating enable 
 for_window [class="Lxappearance"] floating enable 
 for_window [class="Pavucontrol"] floating enable 
-
+for_window [class="Keepassx"] floating enable
 
 # 1:  LVDS1 "
 # 2:  HDMI1 "
@@ -343,6 +343,13 @@ bar {
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') -5% #increase sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
+### Volume controls ( no multimidia ) - $mod+Alt 
+bindsym $mod+Mod1+Up exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') +5% #increase sound volume
+bindsym $mod+Mod1+Down exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') -5% #increase sound volume
+bindsym $mod+Mod1+Left exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
+bindsym $mod+Mod1+Right exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
+
+
 
 ### Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -356,6 +363,11 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+### Media player controls (no multimidia ) $mod+Ctrl
+bindsym $mod+Ctrl+Up exec playerctl play
+bindsym $mod+Ctrl+Down exec playerctl pause
+bindsym $mod+Ctrl+Right exec playerctl next
+bindsym $mod+Ctrl+Left exec playerctl previous
 
 ### start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -368,7 +380,7 @@ bindsym $mod+Ctrl+p exec mate-screenshot -w
 ### File Explorer
 bindsym $mod+Shift+f exec caja
 
-### Show Calender
+### Show Calenderd
 bindsym $mod+c exec zenity --calendar
             
 # Key indicators
@@ -394,8 +406,8 @@ exec --no-startup-id /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indi
 #########################################################
 
 # Set inner/outer gaps
-gaps inner 3
-gaps outer 3
+gaps inner 4
+gaps outer 4
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>

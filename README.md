@@ -267,6 +267,12 @@ keybinds | Volume controls
 **XF86AudioLowerVolume** | - decrease
 **XF86AudioMute** | mute
 
+keybinds | Volume controls ( no multimidia ) 
+------------ | -------------
+**$mod+Alt+Up** | +increase
+**$mod+Alt+Down** | - decrease
+**$mod+Alt+Left / $mod+Alt+Left** | mute
+
 keybinds | Sreen brightness controls 
 ------------ | -------------
 **XF86MonBrightnessUp** | +increase
@@ -283,6 +289,14 @@ keybinds | Media player controls
 **XF86AudioPause** | pause
 **XF86AudioNext** | next
 **XF86AudioPrev** | previous
+
+keybinds | Media player controls ( no multimidia ) 
+------------ | -------------
+**$mod+Ctrl+Up** | play
+**$mod+Ctrl+Down** | pause
+**$mod+Ctrl+Right** | next
+**$mod+Ctrl+Left** | previous
+
 
 keybinds | start a terminal 
 ------------ | -------------
