@@ -58,10 +58,6 @@ sudo apt update
 sudo apt upgrade
 sudo apt install fontconfig-infinality -y
 
-# Icons Theme
-sudo add-apt-repository ppa:moka/daily
-sudo apt update && sudo apt install moka-icon-theme -y
-
 # Pomodoro
 sudo add-apt-repository ppa:atareao/atareao
 sudo apt-get update
@@ -157,13 +153,7 @@ chsh -s /bin/zsh
 ## Programs (download)
 #########################################################
 
-# Arc Theme
-echo "# Arc Theme"
-echo "https://github.com/horst3180/arc-firefox-theme/releases"
-echo "https://github.com/horst3180/arc-theme"
-#echo "https://github.com/Boruch-Baum/morc_menu"
-
 # Install controller playerctl
-# echo "# Install controller playerctl (Media Sound)"
+echo "# Install controller playerctl (Media Sound)"
 echo "https://github.com/acrisci/playerctl/releases"
 read

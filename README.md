@@ -47,45 +47,47 @@ key=''          # Key - http://openweathermap.org/
 * zsh
 * lxappearance
 * aptitude
+* classicmenu-indicator
 
 **(ppa)**
 
 * fontconfig-infinality
-* moka-icon-theme
+* pomodoro-indicator
+* adapta-gtk-theme
+* adapta-backgrounds
+* paper-icon-theme
+* paper-cursor-theme
 
 **(github)**
 
 * snapfly
-* morc_menu
 * Font-Awesome
 * YosemiteSanFranciscoFont
-* arc-theme
-* arc-firefox-theme
 * playerctl
 * i3blocks-contrib
-
-
+* i3lock-fancy
+* prezto(zsh)
 
 ```
 screenfetch 
-                          ./+o+-       user@ubuntu
+                          ./+o+-       anon@viper
                   yyyyy- -yyyyyy+      OS: Ubuntu 16.04 xenial
                ://+//////-yyyyyyo      Kernel: x86_64 Linux 4.4.0-57-generic
-           .++ .:/++++++/-.+sss/`      Uptime: 3h 40m
-         .:++o:  /++++++++/:--:/-      Packages: 2976
+           .++ .:/++++++/-.+sss/`      Uptime: 4h 37m
+         .:++o:  /++++++++/:--:/-      Packages: 2992
         o:+o+:++.`..```.-/oo+++++/     Shell: zsh 5.1.1
        .:+o:+o/.          `+sssoo+/    Resolution: 2446x1920
   .++/+:+oo+o:`             /sssooo.   WM: i3
- /+++//+:`oo+o               /::--:.   GTK Theme: Arc-Dark [GTK2/3]
- \+/+o+++`o++o               ++////.   Icon Theme: Moka
+ /+++//+:`oo+o               /::--:.   GTK Theme: Adapta-Nokto-Eta [GTK2/3]
+ \+/+o+++`o++o               ++////.   Icon Theme: Paper
   .++.o+++oo+:`             /dddhhh.   Font: System San Francisco Display 9
        .+.o+oo:.          `oddhhhh+    CPU: Intel Celeron CPU B820 @ 1.7GHz
         \+.++o+o``-````.:ohdhhhhh+     GPU: Mesa DRI Intel(R) Sandybridge Mobile 
-         `:o+++ `ohhhhhhhhyo++os:      RAM: 4742MiB / 7684MiB
+         `:o+++ `ohhhhhhhhyo++os:      RAM: 5613MiB / 7684MiB
            .o:`.syhhhhhhh/.oo++o`     
                /osyyyyyyo++ooo+++/    
                    ````` +oo+++o\:    
-                          `oo++.      
+                          `oo++.       
 ```
 
 ## Screenhot
