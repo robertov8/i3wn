@@ -93,11 +93,10 @@ mv ~/.Xresources ~/.Xresources.bk
 cp .Xresources ~/.
 xrdb ~/.Xresources
 
-# Morc_menu - Terminal
-git clone https://github.com/Boruch-Baum/morc_menu.git ~/i3/apps/morc_menu
 
 ## i3blocks - contrib
 git clone https://github.com/vivien/i3blocks-contrib.git ~/i3/apps/i3blocks-contrib
+
 # apt-upgrades
 sudo cp ~/i3/scripts/80i3blocks /etc/apt/apt.conf.d/80i3blocks
 sudo chown root:root /etc/apt/apt.conf.d/80i3blocks
@@ -128,13 +127,6 @@ ln -s ~/i3/fonts/settings.ini ~/.config/gtk-3.0/.
 
 # Set Style Fonts
 sudo bash /etc/fonts/infinality/infctl.sh setstyle
-
-# Theme Sublime Text
-# ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
-# "color_scheme": "Packages/User/SublimeLinter/Arc (SL).tmTheme",
-# "theme": "Arc-Dark-Master.sublime-theme"
-mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Arc-Dark/ ~/.config/sublime-text-3/Packages/User/.
-mv ~/i3/sublimetext/Sublime-Text-3-Arc-Dark-theme/Widget.sublime-settings ~/.config/sublime-text-3/Packages/User/.
 
 
 # Prezto — Instantly Awesome Zsh
