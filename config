@@ -153,9 +153,11 @@ set $monitor3 "VGA1"
 workspace $workspace1 output $monitor1
 workspace $workspace2 output $monitor2
 workspace $workspace3 output $monitor1
-workspace $workspace4 output $monitor2
+workspace $workspace4 output $monitor1
 workspace $workspace5 output $monitor1
 workspace $workspace6 output $monitor2
+workspace $workspace7 output $monitor1
+workspace $workspace8 output $monitor1
 workspace $workspace9 output $monitor1
 workspace $workspace10 output $monitor2
 
