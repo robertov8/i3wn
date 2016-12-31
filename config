@@ -246,7 +246,6 @@ set $inactive-text-color  #546E7A
 set $urgent-bg-color      #E53935
 set $indicator            #39477A
 
-set $teste #A40000
 # window colors
 #                       border              background         text                 indicator
 client.focused          $bg-color           $focused-bg-color  $text-color          $indicator
@@ -285,7 +284,7 @@ bar {
         mode dock
         font pango:System San Francisco Display, FontAwesome 9
         separator_symbol ""
-        status_command i3blocks -c ~/i3/i3blocks/i3blocks.conf
+        status_command i3blocks -c ~/i3/i3blocks/i3blocks-lvds.conf
         colors {
              background $bg-color
              separator #757575
@@ -305,7 +304,7 @@ bar {
         output $monitor2
         font pango:System San Francisco Display, FontAwesome 9
         separator_symbol ""         
-        status_command i3blocks -c ~/i3/i3blocks/i3blocks.conf
+        status_command i3blocks -c ~/i3/i3blocks/i3blocks-hdmi-vga.conf
         colors {
             background $bg-color
             separator #757575
