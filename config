@@ -27,6 +27,29 @@ font pango:System San Francisco Display 9
 # font, it doesn’t scale on retina/hidpi displays.
 
 
+## List keybords - modifiers
+#
+# $ xmodmap -pm
+#
+# xmodmap:  up to 4 keys per modifier, (keycodes in parentheses):
+# shift       Shift_L (0x32),  Shift_R (0x3e)
+# lock        Caps_Lock (0x42)
+# control     Control_L (0x25),  Control_R (0x69)
+# mod1        Alt_L (0x40),  Meta_L (0xcd)
+# mod2        Num_Lock (0x4d)
+# mod3        Scroll_Lock (0x4e)
+# mod4        Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+# mod5        ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+#   
+# $ xev
+# 
+# KeyRelease event, serial 34, synthetic NO, window 0x3c00001,
+#   root 0xc1, subw 0x0, time 18518057, (67,78), root:(2216,938),
+#   state 0x14, keycode 105 (keysym 0xffe4, Control_R), same_screen YES,
+#   XLookupString gives 0 bytes: 
+#   XFilterEvent returns: False
+
+
 #########################################################
 ## Layout
 #########################################################
@@ -85,10 +108,22 @@ bindsym $mod+v split v
 ### enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+## Popups during fullscreen mode
+popup_during_fullscreen smart
+
 ### change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+
+### The right button toggles floating
+bindsym --whole-window $mod+button3 floating toggle
+
+### Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+### Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 ### toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -96,10 +131,13 @@ bindsym $mod+Shift+space floating toggle
 ### change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+### sticky floating windows
+bindsym $mod+Ctrl+space sticky toggle
+
 ### focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
+### focus the child container
 bindsym $mod+z focus child
 
 ### resize window (you can also use the mouse for that)
@@ -107,12 +145,12 @@ mode "  " {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
+        # Pressing right will grow the window’s width.
         bindsym k resize grow height 10 px or 10 ppt
+        # Pressing up will shrink the window’s height.
         bindsym l resize shrink height 10 px or 10 ppt
+        # Pressing down will grow the window’s height.
         bindsym ccedilla resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -127,6 +165,12 @@ mode "  " {
 }
 bindsym $mod+r mode "  "
 
+### Toggle between dock mod and hide mode
+bindsym $mod+b bar mode toggle
+
+### The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
 
 #########################################################
 ## Workspace
@@ -135,31 +179,33 @@ bindsym $mod+r mode "  "
 # variables workspace
 set $workspace1 " 1:  LVDS1 "
 set $workspace2 " 2:  HDMI1 "
-set $workspace3 " 3:  "
+set $workspace3 " 3:  VGA1 "
 set $workspace4 " 4:  "
 set $workspace5 " 5:  "
 set $workspace6 " 6:  "
 set $workspace7 " 7:  "
 set $workspace8 " 8:  "
 set $workspace9 " 9:  "
-set $workspace10 " 10:  "
+set $workspace10 " 10: "
 
+## workspace default monitors
+#set $monitor1 "LVDS1"
+#set $monitor3 "VGA1"
+#set $monitor2 ""
 
-# workspace default monitors
-set $monitor1 "LVDS1"
+set $monitor1 "VGA1"
 set $monitor2 "HDMI1"
-set $monitor3 "VGA1"
 
 workspace $workspace1 output $monitor1
 workspace $workspace2 output $monitor2
-workspace $workspace3 output $monitor1
+workspace $workspace3 output $monitor2
 workspace $workspace4 output $monitor1
 workspace $workspace5 output $monitor1
 workspace $workspace6 output $monitor2
 workspace $workspace7 output $monitor1
 workspace $workspace8 output $monitor1
 workspace $workspace9 output $monitor1
-workspace $workspace10 output $monitor2
+workspace $workspace10 output $monitor1
 
 ### switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -202,35 +248,41 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
+# Window title format
+for_window [class=".*"] title_format "%title - %class - %instance"
 
 # Move apps spesific workspace
 # Command show class: xpropc
-# assign [class="Mate-terminal"] $workspace3
 for_window [class="Arandr"] floating enable
 for_window [class="Nitrogen"] floating enable 
-for_window [class="Caja"] floating enable
-for_window [class="Spotify"] floating enable 
 for_window [class="Galculator"] floating enable 
 for_window [class="Lxappearance"] floating enable 
 for_window [class="Pavucontrol"] floating enable 
-for_window [class="Keepassx"] floating enable
+for_window [class="zuluCrypt"] floating disable
+
 
 # 1:  LVDS1 "
 # 2:  HDMI1 "
-# 3:  "
+# 3:  VGA1 "
 # 4:  "
-assign [class="Caja"] $workspace4
+# for_window [class="Caja"] move to workspace $workspace4
 # 5:  "
-assign [class="Chromium-browser"] $workspace5
+for_window [class="Chromium-browser"] move to workspace $workspace5
+for_window [class="Firefox"] move to workspace $workspace5
 # 6:  "
-assign [class="Sublime_text"] $workspace6
-assign [class="jetbrains-phpstorm"] $workspace6
+for_window [class="Sublime_text"] move to workspace $workspace6
+for_window [class="jetbrains-phpstorm"] move to workspace $workspace6
+for_window [class="Chromium-browser" title="^Developer Tools"] move to workspace $workspace6
 #  "
 # 8:  "
 for_window [class="Spotify"] move to workspace $workspace8
-# 9:  "
-# 10: "
+for_window [class="Chromium-browser" title="Butter"] move to workspace $workspace8
 
+# 9:  "
+for_window [class="VirtualBox"] move to workspace $workspace9
+# 10: 
+for_window [class="zuluCrypt"] move to workspace $workspace10
+for_window [class="Keepassx"] move to workspace $workspace10
 
 
 #########################################################
@@ -265,8 +317,6 @@ bindsym $mod+Shift+d exec rofi -show run -opacity "85" -font "System San Francis
 bindsym $mod+Ctrl+d exec rofi -show window -opacity "85" -font "System San Francisco Display 14"
 bindsym $mod+Mod1+d exec rofi -show ssh -opacity "85" -font "System San Francisco Display 14"
 
-# Transparency
-exec compton
 
 #########################################################
 # Navbar
@@ -274,16 +324,19 @@ exec compton
 
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 
-# Monitor: LVDS1
+# Monitor 1
 bar {
-        
+        id bar-1
         position top
         height 25
         tray_output $monitor1
         output $monitor1
         mode dock
-        font pango:System San Francisco Display, FontAwesome 9
         separator_symbol "  "
+        workspace_buttons yes
+        mode dock
+
+        font pango:System San Francisco Display, FontAwesome 9
         status_command i3blocks -c ~/i3/i3blocks/i3blocks-lvds.conf
         colors {
              background $bg-color
@@ -296,15 +349,20 @@ bar {
         }
 }
 
-# Monitor: HDMI1
+# Monitor 2
 bar {
-        position bottom
+        id bar-2
+        position top
         height 25
         tray_output none
         output $monitor2
-        font pango:System San Francisco Display, FontAwesome 9
         separator_symbol "  "         
+        workspace_buttons yes
+        mode dock
+
+        font pango:System San Francisco Display, FontAwesome 9
         status_command i3blocks -c ~/i3/i3blocks/i3blocks-hdmi-vga.conf
+
         colors {
             background $bg-color
             separator #757575
@@ -316,25 +374,6 @@ bar {
         }
 }
 
-# Monitor: VGA1
-bar {
-        position top
-        height 25
-        tray_output none
-        output $monitor3
-        font pango:System San Francisco Display, FontAwesome 9
-        separator_symbol ""         
-        status_command i3blocks -c ~/i3/i3blocks/i3blocks.conf
-        colors {
-            background $bg-color
-            separator #757575
-            #                  border             background         text
-            focused_workspace  $bg-color          $focused-bg-color  $text-color
-            active_workspace   $bg-color          $bg-color          $text-color
-            inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-            urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        }
-}
 
 #########################################################
 ## Shortcut
@@ -344,13 +383,12 @@ bar {
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') -5% #increase sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
+
 ### Volume controls ( no multimidia ) - $mod+Alt 
 bindsym $mod+Mod1+Up exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') +5% #increase sound volume
 bindsym $mod+Mod1+Down exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | awk '{print $1}') -5% #increase sound volume
 bindsym $mod+Mod1+Left exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
 bindsym $mod+Mod1+Right exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | awk '{print $1}') toggle # mute sound
-
-
 
 ### Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -364,6 +402,7 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
 ### Media player controls (no multimidia ) $mod+Ctrl
 bindsym $mod+Ctrl+Up exec playerctl play
 bindsym $mod+Ctrl+Down exec playerctl pause
@@ -388,27 +427,30 @@ bindsym $mod+c exec zenity --calendar
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
+# Start Menu Classic
+bindsym $mod+Home exec sleep 10 && classicmenu-indicator
+
+
 #########################################################
 # Autostart Apps
 #########################################################
 
-exec --no-startup-id caja-dropbox start
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
+exec --no-startup-id sleep 2 && nm-applet
+exec --no-startup-id sleep 4 && blueman-applet
+exec --no-startup-id sleep 6 && caffeine-indicator
+exec --no-startup-id sleep 8 && /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indicator
+exec --no-startup-id sleep 10 && caja-dropbox start
 
 # ClassicMenu Indicator
-exec --no-startup-id classicmenu-indicator
-
-# Pomodoro
-exec --no-startup-id /opt/extras.ubuntu.com/pomodoro-indicator/bin/pomodoro-indicator
+exec --no-startup-id sleep 30 && classicmenu-indicator
 
 #########################################################
 # Settings for i3-gaps
 #########################################################
 
 # Set inner/outer gaps
-gaps inner 4
-gaps outer 4
+gaps inner 2
+gaps outer 2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -471,12 +513,11 @@ mode "$mode_gaps_outer" {
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # set $Locker i3lock && sleep 1
-set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender  |  (H)ibernar |  (R)einiciar |  (D)esligar
+set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender |  (R)einiciar |  (D)esligar
 mode "$mode_system" {
-    bindsym b exec --no-startup-id  $HOME/i3/apps/i3lock-fancy/lock -f 'DejaVu-Sans'
+    bindsym b exec --no-startup-id $HOME/i3/scripts/i3exit lock
     bindsym l exec --no-startup-id $HOME/i3/scripts/i3exit logout
     bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit suspend
-    bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit hibernate
     bindsym r exec --no-startup-id $HOME/i3/scripts/i3exit reboot
     bindsym d exec --no-startup-id $HOME/i3/scripts/i3exit shutdown
 
@@ -487,12 +528,11 @@ mode "$mode_system" {
 bindsym $mod+Delete mode "$mode_system"
 
 ### lock screen
-# bindsym $mod+Shift+x exec i3lock --color 475263
-bindsym $mod+Shift+x exec $HOME/i3/apps/i3lock-fancy/lock -f 'DejaVu-Sans'
-#bindsym $mod+Shift+x exec i3lock -e -i $HOME/i3/wallpaper/electriccolor/electriccolor.png -c 000000
+bindsym $mod+Insert exec $HOME/i3/scripts/i3exit lock
 
 # Set Wallpaper
 exec --no-startup-id nitrogen --restore
 
 # Set position monitor (generate arandr)
-exec xrandr --output HDMI1 --primary --mode 1920x1080 --pos 1366x0 --rotate right --output LVDS1 --mode 1366x768 --pos 0x504 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
+exec xrandr --output HDMI1 --primary --mode 1920x1080 --pos 1366x0 --rotate right --output LVDS1 --mode 1366x768 --pos 0x416 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
+

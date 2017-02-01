@@ -92,3 +92,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# Open Program's child processes in tabbed view
+i3-gui(){
+    # Create tabbed container.
+    i3-msg split v > /dev/null
+    i3-msg layout tabbed > /dev/null
+    
+    # Run program.
+    $@
+    
+    # Remove container.
+    i3-msg move up > /dev/null
+    i3-msg move down > /dev/null
+}
+
+# Aliases for programs with a gui.
+alias feh="i3-gui virtualbox"
+

@@ -18,7 +18,6 @@ sudo apt install xbacklight -y
 
 # Menu
 sudo apt install rofi -y
-sudo apt install compton -y
 
 # Bar icons
  sudo apt install i3blocks -y
@@ -31,9 +30,6 @@ sudo apt install lm-sensors -y
 
 # Nitrogen - Set wallpaper
 sudo apt install nitrogen -y
-
-# File manager
-sudo apt install thunar && thunar-dropbox-plugin -y
 
 # Terminal Zsh
 sudo apt install zsh -y
@@ -74,6 +70,12 @@ sudo add-apt-repository ppa:snwh/pulp
 sudo apt-get update
 sudo apt-get install paper-icon-theme
 sudo apt-get install paper-cursor-theme
+
+# Caffeine indicator
+sudo add-apt-repository ppa:caffeine-developers/ppa
+sudo apt-get update
+sudo apt-get install caffeine
+
 
 #########################################################
 ## Programs (manual)
@@ -118,6 +120,9 @@ unzip master.zip
 mv -f YosemiteSanFranciscoFont-master/*.ttf ~/.fonts/
 rm -rf YosemiteSanFranciscoFont-master/
 rm master.zip
+
+# Icons weather
+cp fonts/weather/artill_clean_icons.otf ~/.fonts/.
 
 # App - The change Themes and Fonts
 rm ~/.gtkrc-2.0

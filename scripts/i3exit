@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 
-lock() {
-    #  killall compton
-    $HOME/i3/i3lock/i3lock.sh
-    #  compton -b
-}
-
 case "$1" in
     lock)
-        lock
+        $HOME/i3/apps/i3lock-fancy/lock -p -g -f 'DejaVu-Sans'
         ;;
     logout)
         i3-msg exit

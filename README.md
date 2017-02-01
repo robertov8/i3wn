@@ -57,6 +57,7 @@ key=''          # Key - http://openweathermap.org/
 * adapta-backgrounds
 * paper-icon-theme
 * paper-cursor-theme
+* caffeine
 
 **(github)**
 
@@ -174,6 +175,11 @@ keybinds | change container layout (stacked, tabbed, toggle split)
 keybinds | toggle tiling / floating 
 ------------ | -------------
 **$mod+Shift+space** | tiling/floating
+
+
+keybinds | sticky floating windows
+------------ | -------------
+**$mod+Ctrl+space** | sticky toggle
 
 
 keybinds | change focus between tiling / floating windows
