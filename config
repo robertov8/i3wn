@@ -189,12 +189,12 @@ set $workspace9 " 9:  "
 set $workspace10 " 10: "
 
 ## workspace default monitors
-#set $monitor1 "LVDS1"
+set $monitor1 "LVDS1"
 #set $monitor3 "VGA1"
 #set $monitor2 ""
 
-set $monitor1 "VGA1"
-set $monitor2 "HDMI1"
+#set $monitor1 "VGA1"
+#set $monitor2 "HDMI1"
 
 workspace $workspace1 output $monitor1
 workspace $workspace2 output $monitor2
@@ -513,11 +513,12 @@ mode "$mode_gaps_outer" {
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # set $Locker i3lock && sleep 1
-set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender |  (R)einiciar |  (D)esligar
+set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender  |  (H)ibernar |  (R)einiciar |  (D)esligar
 mode "$mode_system" {
-    bindsym b exec --no-startup-id $HOME/i3/scripts/i3exit lock
+    bindsym b exec --no-startup-id  $HOME/i3/apps/i3lock-fancy/lock -f 'DejaVu-Sans'
     bindsym l exec --no-startup-id $HOME/i3/scripts/i3exit logout
     bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit suspend
+    bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit hibernate
     bindsym r exec --no-startup-id $HOME/i3/scripts/i3exit reboot
     bindsym d exec --no-startup-id $HOME/i3/scripts/i3exit shutdown
 
