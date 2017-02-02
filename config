@@ -61,6 +61,9 @@ font pango:System San Francisco Display 9
 # Hide borders
 # hide_edge_borders none
 
+# Default Layout
+workspace_layout tabbed
+
 ### Change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -189,23 +192,20 @@ set $workspace9 " 9:  "
 set $workspace10 " 10: "
 
 ## workspace default monitors
-#set $monitor1 "LVDS1"
-#set $monitor3 "VGA1"
-#set $monitor2 ""
-
-set $monitor1 "VGA1"
+set $monitor1 "LVDS1"
 set $monitor2 "HDMI1"
+set $monitor3 "VGA1"
 
 workspace $workspace1 output $monitor1
 workspace $workspace2 output $monitor2
-workspace $workspace3 output $monitor2
-workspace $workspace4 output $monitor1
-workspace $workspace5 output $monitor1
-workspace $workspace6 output $monitor2
-workspace $workspace7 output $monitor1
-workspace $workspace8 output $monitor1
-workspace $workspace9 output $monitor1
-workspace $workspace10 output $monitor1
+workspace $workspace3 output $monitor3
+workspace $workspace4 output $monitor2
+workspace $workspace5 output $monitor2
+workspace $workspace6 output $monitor3
+workspace $workspace7 output $monitor2
+workspace $workspace8 output $monitor2
+workspace $workspace9 output $monitor2
+workspace $workspace10 output $monitor2
 
 ### switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -331,7 +331,6 @@ bar {
         height 25
         tray_output $monitor1
         output $monitor1
-        mode dock
         separator_symbol "  "
         workspace_buttons yes
         mode dock
@@ -354,11 +353,35 @@ bar {
         id bar-2
         position top
         height 25
-        tray_output none
+        tray_output $monitor2
         output $monitor2
+        separator_symbol "  "
+        workspace_buttons yes
+        mode invisible
+
+        font pango:System San Francisco Display, FontAwesome 9
+        status_command i3blocks -c ~/i3/i3blocks/i3blocks-lvds.conf
+        colors {
+             background $bg-color
+             separator #757575
+             #                  border             background         text
+             focused_workspace  $bg-color          $focused-bg-color  $text-color
+             active_workspace   $bg-color          $bg-color          $text-color
+             inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+             urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        }
+}
+
+# Monitor 3
+bar {
+        id bar-3
+        position top
+        height 25
+        tray_output none
+        output $monitor3
         separator_symbol "  "         
         workspace_buttons yes
-        mode dock
+        mode invisible
 
         font pango:System San Francisco Display, FontAwesome 9
         status_command i3blocks -c ~/i3/i3blocks/i3blocks-hdmi-vga.conf
@@ -513,11 +536,12 @@ mode "$mode_gaps_outer" {
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # set $Locker i3lock && sleep 1
-set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender |  (R)einiciar |  (D)esligar
+set $mode_system System   (B)loquear |  (L)ogout |  (S)uspender |  (H)ibernar |  (R)einiciar |  (D)esligar
 mode "$mode_system" {
     bindsym b exec --no-startup-id $HOME/i3/scripts/i3exit lock
     bindsym l exec --no-startup-id $HOME/i3/scripts/i3exit logout
     bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit suspend
+    bindsym s exec --no-startup-id $HOME/i3/scripts/i3exit hibernate
     bindsym r exec --no-startup-id $HOME/i3/scripts/i3exit reboot
     bindsym d exec --no-startup-id $HOME/i3/scripts/i3exit shutdown
 
@@ -534,5 +558,30 @@ bindsym $mod+Insert exec $HOME/i3/scripts/i3exit lock
 exec --no-startup-id nitrogen --restore
 
 # Set position monitor (generate arandr)
-exec xrandr --output HDMI1 --primary --mode 1920x1080 --pos 1366x0 --rotate right --output LVDS1 --mode 1366x768 --pos 0x416 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
+#  
+# Notebook LVDS1 - rotate normal
+bindsym $mod+F1 exec notify-send "LVDS1" && \
+i3-msg 'bar mode dock bar-1' && \
+i3-msg 'bar mode invisible bar-2' && \
+i3-msg 'bar mode invisible bar-3' && \
+xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off && \
+exec nitrogen --restore
 
+# Monitor HDM1 - rotate normal
+bindsym $mod+F2 exec notify-send "HDMI1" && \
+i3-msg 'bar mode dock bar-2' && \
+i3-msg 'bar mode invisible bar-1' && \
+i3-msg 'bar mode invisible bar-3' && \
+xrandr --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS1 --off --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off && \
+exec nitrogen --restore
+
+# Monitor HDM1 - rotate normal + Monitor VGA1 - rotate left
+bindsym $mod+F3 exec notify-send "HDMI1 - VGA1" && \
+i3-msg 'bar mode dock bar-2' && \
+i3-msg 'bar mode dock bar-3' && \
+i3-msg 'bar mode invisible bar-1' && \
+xrandr --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS1 --off --output VIRTUAL1 --off --output DP1 --off --output VGA1 --primary --mode 1920x1080 --pos 1920x0 --rotate left && \
+exec nitrogen --restore
+
+
+exec xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
